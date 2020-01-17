@@ -1,0 +1,21 @@
+body {
+    background-color: #ccc;
+}
+
+.navbar {
+    border-radius: 0;
+    margin: 0;
+}
+
+.col-md-3 {
+    background-color: #ccc;
+}
+
+.city:hover {
+    color: #337ab7;
+    font-weight: bold;
+}
+
+h4 {
+    padding-top: 1rem;
+}

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="style.css" />
+    <title>Weather Dashboard</title>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-dark bg-dark">
+        <h1 class="card-title text-white text-center">Weather Dashboard</h1>
+    </nav>
+
+    <div class="col-sm-12 col-md-3">
+        <h4>Search for a City:</h4>
+        <form>
+            <div class="input-group">
+                <input type="text" class="form-control" id="user-input">
+                <div class="input-group-btn">
+                    <button class="btn btn-primary" type="submit" id="submit">
+                        <i class="glyphicon glyphicon-search"></i>
+                    </button>
+                </div>
+            </div>
+        </form>
+        <br>
+
+        <ul class="list-group">
+        </ul>
+    </div>
+
+    <br>
+
+    <div class="col-sm-12 col-md-9">
+
+        <div class="card">
+            <div class="card-body">
+                <h3 class="card-title" id="current">Seattle <span id="todayIs"></span></h3>
+                <p class="card-text">Temperature: <span id="cur-temp"></span></p>
+                <p class="card-text">Humidity: <span id="cur-hum"></span></p>
+                <p class="card-text">Wind Speed: <span id="cur-wind"></span></p>
+                <p class="card-text">UV Index: <span id="cur-uv"></span></p>
+            </div>
+        </div>
+
+        <h3>5-Day Forecast:</h3>
+
+        <div class="card-deck">
+        </div>
+    </div>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    <script src="script.js"></script>
+
+</body>
+
+</html>
