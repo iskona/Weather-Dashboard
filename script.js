@@ -34,7 +34,7 @@ function ajaxCall(cityName, url, arr) {
             console.log(response);
 
             let icon = response.weather[0].icon;
-            let iconURL = "http://openweathermap.org/img/wn/" + icon + "@2x.png";
+            let iconURL = "https://openweathermap.org/img/wn/" + icon + "@2x.png";
             let iconImg = $("<img>").attr("src", iconURL)
             console.log("Icon URL: ", iconURL);
             let curTemp = response.main.temp;
@@ -54,7 +54,7 @@ function ajaxCall(cityName, url, arr) {
             lon += response.coord.lon;
 
             $.ajax({
-                url: "http://api.openweathermap.org/data/2.5/uvi?appid=" + APIKey + "&lat=" + lat + "&lon=" + lon,
+                url: "https://api.openweathermap.org/data/2.5/uvi?appid=" + APIKey + "&lat=" + lat + "&lon=" + lon,
                 method: "GET"
             }).then(function (response) {
                 let uvIndex = response.value;
@@ -67,7 +67,7 @@ function ajaxCall(cityName, url, arr) {
         }
     });
 
-    var forecastURL = 'http://api.openweathermap.org/data/2.5/forecast?appid=' + APIKey + '&q=' + cityName + '&count=40';
+    var forecastURL = 'https://api.openweathermap.org/data/2.5/forecast?appid=' + APIKey + '&q=' + cityName + '&count=40';
 
     $.ajax({
         url: forecastURL,
