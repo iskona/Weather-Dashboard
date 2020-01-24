@@ -1,12 +1,11 @@
-// localStorage.clear();
-
 let todayIs = moment().format('l');
 let cityArr = JSON.parse(localStorage.getItem("userInput")) || [];
 let APIKey = "f0c2ae9f58930d7040112332f71a143d";
 
+// localStorage.clear();
+
 function putOnPage(array) {
 
-    $("#todayIs").text(todayIs);
     $(".list-group").empty();
     array = JSON.parse(localStorage.getItem("userInput")) || [];
     for (let i = 0; i < array.length; i++) {
@@ -41,12 +40,12 @@ function ajaxCall(cityName, url, arr) {
             let curHumidity = response.main.humidity;
             let curWind = response.wind.speed;
             let presented = cityArr.includes(cityName);
-            if(!presented) {
+            if (!presented) {
                 cityArr.push(cityName);
             }
             localStorage.setItem("userInput", JSON.stringify(cityArr));
 
-            $("#current").text(`${cityName} (${todayIs}) `).append(iconImg);
+            $("#current").text(`${cityName} (${todayIs})`).append(iconImg);
             $("#cur-temp").text(curTemp).append(" °F");
             $("#cur-hum").text(curHumidity).append(" %");
             $("#cur-wind").text(curWind).append(" MPH");
@@ -101,7 +100,22 @@ function ajaxCall(cityName, url, arr) {
     });
 };
 
-putOnPage(cityArr);
+
+$(document).ready(function () {
+
+    putOnPage(cityArr);
+
+    $.get("https://api.ipdata.co?api-key=test", function (response) {
+
+        $("#current").text(response.city);
+
+        let queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + response.city + "&appid=" + APIKey + "&units=imperial";
+
+        ajaxCall(response.city, queryURL, cityArr);
+
+    }, "jsonp");
+});
+
 
 $(document).on("click", "#submit", function (event) {
 
@@ -113,6 +127,7 @@ $(document).on("click", "#submit", function (event) {
     ajaxCall(cityName, queryURL, cityArr);
 
 });
+
 
 $(document).on("click", ".city", function (event) {
 
