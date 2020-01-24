@@ -30,5 +30,7 @@ This is a weather dashboard application with search functionality to find curren
 
 * Application stores previously searched for cities in `localStorage` and displays them to the user.
 
+* Application loads the user's current location to the initial landing page.
+
 
 [Click here](https://iskona.github.io/Weather-Dashboard/) to launch this project on GitHub Pages.
