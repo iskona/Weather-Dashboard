@@ -2,7 +2,6 @@ let todayIs = moment().format('l');
 let cityArr = JSON.parse(localStorage.getItem("userInput")) || [];
 let APIKey = "f0c2ae9f58930d7040112332f71a143d";
 
-// localStorage.clear();
 
 function putOnPage(array) {
 
@@ -12,7 +11,6 @@ function putOnPage(array) {
         let newLi = $("<li class='list-group-item city'>").text(array[i]).attr("data-city", array[i]);
         $(".list-group").prepend(newLi);
     };
-    // console.log(array);
 };
 
 function ajaxCall(cityName, url, arr) {
@@ -100,19 +98,14 @@ function ajaxCall(cityName, url, arr) {
     });
 };
 
-
 $(document).ready(function () {
-
+    
     putOnPage(cityArr);
 
-    $.get("https://api.ipdata.co?api-key=test", function (response) {
-
-        $("#current").text(response.city);
+    $.get("https://ipinfo.io?token=d5944c581f948f", function (response) {
 
         let queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + response.city + "&appid=" + APIKey + "&units=imperial";
-
         ajaxCall(response.city, queryURL, cityArr);
-
     }, "jsonp");
 });
 
@@ -125,7 +118,6 @@ $(document).on("click", "#submit", function (event) {
     let queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&appid=" + APIKey + "&units=imperial";
 
     ajaxCall(cityName, queryURL, cityArr);
-
 });
 
 
